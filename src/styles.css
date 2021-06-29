@@ -1,0 +1,36 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: sans-serif;
+	background-color: black;
+	color: cyan;
+}
+
+.container {
+	width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.grid-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.row {
+	display: flex;
+}
+
+.cell {
+	background-color: cyan;
+	outline: solid black 1px;
+	min-width: 50px;
+	min-height: 50px;
+}
+
+.black {
+	background-color: black;
+	outline: solid cyan 1px;
+}

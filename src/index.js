@@ -1,25 +1,20 @@
-
-let qty = 5;
-let box = "<div class='cell'>&nbsp;</div>";
-let boxElements = '';
-
-const makeBoxes = function (qty) {
-  let i = 0;
-  while (i < qty) {
-    boxElements = boxElements + box;
-    i++;
-  }
-};
+let qty = 100;
 
 const makeGrid = function (qty) {
-  makeBoxes(qty);
   let playGrid = document.createElement('div');
   playGrid.classList = 'grid-container';
   let i = 0;
   while (i < qty) {
     let boxRow = document.createElement('div');
     boxRow.classList = 'row';
-    boxRow.innerHTML = `${boxElements}`;
+    let j = 0;
+    while (j < qty) {
+      boxElement = document.createElement('div');
+      boxElement.classList = 'cell';
+      boxElement.tabIndex = (i * 100) + j;
+      boxRow.append(boxElement);
+      j++;
+    };
     playGrid.append(boxRow);
     i++;
   };
@@ -32,6 +27,9 @@ var cells = document.querySelectorAll('.cell');
 
 cells.forEach((cell) => {
   cell.addEventListener('mouseover', () => {
-      cell.classList.add('black');
-    });
+    cell.classList.add('black');
   });
+  cell.addEventListener('focus', () => {
+    cell.classList.add('black');
+  });
+});

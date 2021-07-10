@@ -1,17 +1,96 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Vapor Sketch</title>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="src/styles.css">
-  </head>
 
-  <body>
-    <div class="container">
-      <h1>Vapor Sketch</h1>
-      <div id="app"></div>
+<head>
+  <title>Vapor Sketch</title>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="src/styles.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <div id="col1" class="z-adjust draggable window column" style="z-index: 5">
+      <div id="col1-header" class="header">
+        <h1>Column<span class="close" data-parent='col1' data-feedback='Column' tabindex="4">X</span></h1>
+      </div>
+      <div class="col-body">
+        <img src="img/column.png" alt="a roman or greek column">
+      </div>
     </div>
 
-    <script src="src/index.js"></script>
-  </body>
+    <div id="col2" class="z-adjust draggable window column" style="z-index: 5">
+      <div id="col2-header" class="header">
+        <h1>Column<span class="close" data-parent='col2' data-feedback='Column' tabindex="5">X</span></h1>
+      </div>
+      <div class="col-body">
+        <img src="img/column.png" alt="a roman or greek column">
+      </div>
+    </div>
+
+    <div id="control" class="z-adjust draggable window" style="z-index: 1">
+      <div id="controls-header" class="header">
+        <h1>Control<span class="close" data-parent='control' data-feedback='Control' tabindex="1">X</span></h1>
+      </div>
+      <div id="controls-body">
+        <div id="instructions">
+          <p>Tab in to draw with arrow keys.
+          </p>
+        </div>
+        <div id="res-container">
+          <h2 id="resolution">15 x 15</h4>
+        </div>
+        <div class="slidecontainer">
+          <input type="range" min="1" max="42" value="21" class="slider" id="rez-slider" tabindex="2">
+        </div>
+        <button id="clear" tabindex="3">Confirm</button>
+      </div>
+    </div>
+    <div id="app-space" class="z-adjust draggable window" style="z-index: 0">
+      <div id="app-header" class="header">
+        <h1><span id="app-rez">15 x 15</span><span class="close" data-parent='app-space' data-feedback='Grid Space' tabindex="5">X</span></h1>
+      </div>
+      <div id="grid-container"></div>
+    </div>
+  </div>
+  <script src="src/index.js"></script>
+
+  <script type="module">
+    import interact from
+      'https://cdn.interactjs.io/v1.10.11/interactjs/index.js'
+    // target elements with the "draggable" class
+    interact('.draggable')
+      .draggable({
+        // enable inertial throwing
+        allowFrom: '.header',
+        inertia: true,
+        // enable autoScroll
+        autoScroll: true,
+
+        listeners: {
+          // call this function on every dragmove event
+          move: dragMoveListener,
+
+        }
+      })
+
+    function dragMoveListener(event) {
+      var target = event.target
+      // keep the dragged position in the data-x/data-y attributes
+      var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
+      var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
+
+      // translate the element
+      target.style.transform = 'translate(' + x + 'px, ' + y + 'px)'
+
+      // update the posiion attributes
+      target.setAttribute('data-x', x)
+      target.setAttribute('data-y', y)
+    }
+
+    // this function is used later in the resizing and gesture demos
+    window.dragMoveListener = dragMoveListener;
+  </script>
+</body>
+
 </html>

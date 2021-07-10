@@ -1,55 +1,250 @@
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 body {
-  font-family: sans-serif;
-  background-color: black;
-  color: cyan;
+	font-family: "Lucida Console", Geneva, Verdana, Arial, Helvetica, sans-serif;
+	font-weight: 100;
+	letter-spacing: 0.075em;
+	background-color: pink;
+	background-image: url(../img/Swimming_With_Dolphins_4K__30_Minute_Underwater_Relaxation_.gif);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-blend-mode: color-burn;
 }
 
-h1 {
-  text-align: center;
+h1,
+h2,
+h3,
+h4,
+h5,
+h5,
+p {
+	transform: scale(1, 0.9);
+	letter-spacing: 0.07em;
+	font-size: 2em;
 }
 
 .container {
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 80vw;
-  min-height: 100vh;
-  max-width: 750px;
+	width: 100vw;
+	min-height: 100vh;
 }
 
-div#app {
-  display: flex;
-  justify-content: center;
+.window {
+	background-color: lightgray;
+	box-shadow: 5px 5px 7px #76a7a780;
+	opacity: 0.9;
 }
 
-.grid-container {
-  display: flex;
-  flex-direction: column;
-  max-width: 750px;
-  max-height: 750px;
-  width: 80vw;
-  height: 80vw;
+.window img {
+	width: 100%;
+}
+
+#col1 {
+	width: 33vw;
+	max-width: 400px;
+	position: absolute;
+	left: 80vw;
+	top: 5vh;
+}
+
+#col2 {
+	width: 33vw;
+	max-width: 400px;
+	position: absolute;
+	left: 5vw;
+	top: 5vh;
+}
+
+#control {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-bottom: 24px;
+	text-align: center;
+	width: 100%;
+	max-width: 750px;
+	position: absolute;
+	left: 10vw;
+	top: 10vh;
+	opacity: 0.925;
+}
+
+div#col1-header,
+div#col2-header,
+div#controls-header,
+div#app-header {
+	background-color: #76a7a7;
+	padding: 10px;
+	padding-bottom: 11px;
+	margin: 0;
+	color: white;
+	cursor: move;
+	transition: all 0.3s;
+}
+
+div#col1-header:focus,
+div#col1-header:hover,
+div#col2-header:focus,
+div#col2-header:hover,
+div#controls-header:focus,
+div#controls-header:hover,
+div#app-header:focus,
+div#app-header:hover {
+	background-color: #00e5e5;
+	transition: all 0.3s;
+}
+
+h1 {
+	text-align: center;
+	margin: 0;
+	text-align: center;
+	margin: 0;
+	font-weight: 400;
+}
+
+.close {
+	float: right;
+	cursor: default;
+	transform: scaleX(1.35);
+	margin-right: 10px;
+	padding: 0px 3px 3px 5px;
+	display: block;
+	border: solid 1px lightgrey;
+	color: #76a7a8;
+	background-color: lightgrey;
+	transition: all 0.3s;
+}
+
+.close:hover,
+.close:focus {
+	outline: dashed 1px gray;
+	outline-offset: -5px;
+	transition: all 0.3s;
+}
+
+div#controls-body {
+	padding: 20px;
+}
+
+p {
+	color: black;
+	font-size: 1.5em;
+}
+
+.slidecontainer {
+	width: 100%;
+}
+
+.slider {
+	-webkit-appearance: none;
+	width: 100%;
+	height: 12px;
+	background: #ff76a0;
+	outline: none;
+	-webkit-transition: 0.2s;
+	transition: opacity 0.2s;
+}
+
+.slider:focus {
+	outline: dashed 1px gray;
+}
+
+.slider::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 25px;
+	height: 25px;
+	background: #00ffff;
+	cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+	width: 25px;
+	height: 25px;
+	background: #00ffff;
+	cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb:hover,
+.slider::-webkit-slider-thumb:focus,
+.slider::-webkit-slider-thumb:active {
+	outline: dashed 1px gray;
+	outline-offset: -6px;
+}
+
+button#clear {
+	justify-self: center;
+	max-width: 80%;
+	text-align: center;
+	align-self: center;
+	width: 110px;
+	padding: 7px 5px;
+	margin-top: 20px;
+	font-size: 1.5em;
+	border-radius: 0;
+	font-weight: 100;
+	background-color: white;
+	transition: all 0.3s;
+	border: none;
+	border-bottom: solid 3px darkgrey;
+	border-right: solid 3px darkgray;
+}
+
+button#clear:hover,
+button#clear:focus {
+	background-color: #e6f2f7;
+	transition: all 0.3s;
+	border-bottom: solid 3px grey;
+	border-right: solid 3px gray;
+	outline: dashed 1px gray;
+	outline-offset: -7px;
+}
+
+div#app-space {
+	width: 70vw;
+	max-width: 750px;
+	position: absolute;
+	left: 40vw;
+	top: 30vh;
+}
+
+div#app-header {
+	width: 100%;
+}
+
+#play-grid {
+	display: flex;
+	flex-direction: column;
+	width: 70vw;
+	height: 70vw;
+	max-width: 750px;
+	max-height: 750px;
+	background-image: url("https://ih1.redbubble.net/image.236642046.7494/flat,750x1000,075,f.u3.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	opacity: 0.7;
+	position: absolute;
+	box-shadow: 5px 5px 7px #76a7a780;
 }
 
 .row {
-  display: flex;
-  width: 100%;
-  flex: auto;
+	display: flex;
+	width: 100%;
+	flex: auto;
 }
 
 .cell {
-  background-color: cyan;
-  flex: auto;
-  border: 0.5px solid rgba(0, 0, 0, 0.1);
+	flex: auto;
+	border: 0.5px solid rgba(0, 255, 255, 0.25);
+	transition: all 0.3s;
 }
 
-.black {
-  background-color: black;
-  border: 0.5px solid rgba(0, 255, 255, 0.25);
+.cyan {
+	background-color: cyan;
+	flex: auto;
+	border: 0.5px solid rgba(0, 0, 0, 0.1);
+	transition: all 0.3s;
 }
